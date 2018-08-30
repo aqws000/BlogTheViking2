@@ -6,4 +6,41 @@
     android:layout_height="match_parent"
     tools:context=".RegisterActivity">
 
+    <EditText
+        android:id="@+id/nameField"
+        android:layout_width="379dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Your Name"
+        android:inputType="textPersonName"
+        tools:layout_editor_absoluteX="3dp"
+        tools:layout_editor_absoluteY="16dp" />
+
+    <EditText
+        android:id="@+id/emailField"
+        android:layout_width="377dp"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Your Email"
+        android:inputType="textEmailAddress"
+        tools:layout_editor_absoluteX="4dp"
+        tools:layout_editor_absoluteY="83dp" />
+
+    <EditText
+        android:id="@+id/passwordField"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        tools:layout_editor_absoluteX="85dp"
+        tools:layout_editor_absoluteY="153dp" />
+
+    <Button
+        android:id="@+id/registrationBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        tools:layout_editor_absoluteX="148dp"
+        tools:layout_editor_absoluteY="231dp" />
 </android.support.constraint.ConstraintLayout>

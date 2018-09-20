@@ -173,11 +173,20 @@ public void setImage(Context ctx, String image){
             //  if (id == R.id.action_settings) {
             //      return true;
         }
+        if(item.getItemId() == R.id.action_logout){
+
+            logout();
+        }
 
 
 
         return super.onOptionsItemSelected(item);
 
+    }
+
+    private void logout() {
+
+        mAuth.signOut();
     }
 
 }

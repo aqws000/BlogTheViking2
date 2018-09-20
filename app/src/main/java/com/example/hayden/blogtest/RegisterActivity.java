@@ -41,20 +41,15 @@ private EditText mNameField;
         mAuth = FirebaseAuth.getInstance();
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
-        //Creating new Users child
 
 
 
         mProgress = new ProgressDialog(this);
 
         mNameField = (EditText) findViewById(R.id.nameField);
-
         mEmailField = (EditText) findViewById(R.id.emailField);
-
         mPasswordField = (EditText) findViewById(R.id.passwordField);
-
         mRegisterBtn = (Button) findViewById(R.id.registerBtn);
-        //All related to Activity_register xml
 
 
         mRegisterBtn.setOnClickListener(new View.OnClickListener() {
@@ -62,7 +57,6 @@ private EditText mNameField;
             public void onClick(View view) {
 
                 startRegister();
-                //Button function
 
             }
         });
@@ -77,7 +71,7 @@ private EditText mNameField;
         String password = mPasswordField.getText().toString().trim();
 
         if(!TextUtils.isEmpty(name) && !TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)){
-//If any of the fields are empty, the sign up will not work
+
             mProgress.setMessage("Signing Up ...");
             mProgress.show();
 
@@ -89,18 +83,16 @@ private EditText mNameField;
 
                         String user_id = mAuth.getCurrentUser().getUid();
 
-                        DatabaseReference current_user =  mDatabase.child(user_id);
+                        DatabaseReference cureent_user_db =  mDatabase.child(user_id);
 
-                        current_user.child("name").setValue(name);
-                        current_user.child("image").setValue("default");
-                        //Creating childs name and image under Users child
+                        cureent_user_db.child("name").setValue(name);
+                        cureent_user_db.child("image").setValue("default");
 
                         mProgress.dismiss();
 
                         Intent mainIntent = new Intent(RegisterActivity.this, MainActivity.class);
                         mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
                         startActivity(mainIntent);
-                        //Then logs you onto the main page
 
                     }
 
@@ -111,5 +103,3 @@ private EditText mNameField;
 
     }
 }
-
-

@@ -43,11 +43,14 @@ public class LoginActivity extends AppCompatActivity {
         mAuth = FirebaseAuth.getInstance();
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
+        mDatabase.keepSynced(true);
+        mProgress = new ProgressDialog(this);
 
-        mLoginPasswordField = (EditText) findViewById(R.id.passwordField);
-        mLoginEmailField = (EditText) findViewById(R.id.emailField);
+        mLoginPasswordField = (EditText) findViewById(R.id.loginPasswordField); //Hayden these have issues
+        mLoginEmailField = (EditText) findViewById(R.id.loginEmailField);
 
         mLoginBtn = (Button) findViewById(R.id.loginBtn);
+
         msignUp = (Button) findViewById(R.id.signUp);
 
         msignUp.setOnClickListener(new View.OnClickListener() {
@@ -70,7 +73,7 @@ public class LoginActivity extends AppCompatActivity {
     }
     private void checkLogin() {
 
-        String email = mLoginEmailField.getText().toString().trim();
+        String email = mLoginEmailField.getText().toString().trim(); //Hayden these have issues
         String password = mLoginPasswordField.getText().toString().trim();
 
         if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {

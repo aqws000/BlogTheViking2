@@ -27,15 +27,12 @@ public class LoginActivity extends AppCompatActivity {
     private EditText mLoginEmailField;
     private EditText mLoginPasswordField;
     private Button mLoginBtn;
+    private Button msignUp;
 
     private FirebaseAuth mAuth;
 
     private DatabaseReference mDatabase;
     private ProgressDialog mProgress;
-    private DatabaseReference mDatabaseUsers;
-
-    private SignInButton mGoogleBtn;
-
 
 
 
@@ -47,10 +44,20 @@ public class LoginActivity extends AppCompatActivity {
 
         mDatabase = FirebaseDatabase.getInstance().getReference().child("Users");
 
-        mLoginPasswordField = (EditText)findViewById(R.id.passwordField);
+        mLoginPasswordField = (EditText) findViewById(R.id.passwordField);
         mLoginEmailField = (EditText) findViewById(R.id.emailField);
 
         mLoginBtn = (Button) findViewById(R.id.loginBtn);
+        msignUp = (Button) findViewById(R.id.signUp);
+
+        msignUp.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(LoginActivity.this, RegisterActivity.class);
+                startActivity(intent);
+            }
+        });
+
 
         mLoginBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -59,63 +66,72 @@ public class LoginActivity extends AppCompatActivity {
                 checkLogin();
             }
         });
-    }
 
+    }
     private void checkLogin() {
 
         String email = mLoginEmailField.getText().toString().trim();
         String password = mLoginPasswordField.getText().toString().trim();
 
-                if(!TextUtils.isEmpty(email)&&!TextUtils.isEmpty(password)){
+        if (!TextUtils.isEmpty(email) && !TextUtils.isEmpty(password)) {
 
-                    mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
-                        @Override
-                        public void onComplete(@NonNull Task<AuthResult> task) {
+            mProgress.setMessage("Checking Login ...");
+            mProgress.show();
 
-                            if (task.isSuccessful()) {
+            mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
+                @Override
+                public void onComplete(@NonNull Task<AuthResult> task) {
 
-                                checkUserExist();
+                    if (task.isSuccessful()) {
 
-                            }  else{
-                                Toast.makeText(LoginActivity.this, "Error Login", Toast.LENGTH_LONG).show();
-                            }
+                        mProgress.dismiss();
 
+                        checkUserExist();
 
-                        }
-                    });
+                    } else {
 
+                        mProgress.dismiss();
+
+                        Toast.makeText(LoginActivity.this, "Error Login", Toast.LENGTH_LONG).show();
+
+                    }
 
                 }
+            });
+
+        }
     }
 
     private void checkUserExist() {
 
-        final String user_id = mAuth.getCurrentUser().getUid();
+        if (mAuth.getCurrentUser() != null) {
 
-        mDatabase.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(DataSnapshot dataSnapshot) {
+            final String user_id = mAuth.getCurrentUser().getUid();
 
-                if(dataSnapshot.hasChild(user_id)){
+            mDatabase.addValueEventListener(new ValueEventListener() {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
 
-                    Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
-                    mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-                    startActivity(mainIntent);
+                    if (dataSnapshot.hasChild(user_id)) {
+
+                        Intent mainIntent = new Intent(LoginActivity.this, MainActivity.class);
+                        mainIntent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                        startActivity(mainIntent);
 
 
+                    } else {
 
-                }else{
-
-                    Toast.makeText(LoginActivity.this, "Account needs to be setup", Toast.LENGTH_LONG).show();
+                        Toast.makeText(LoginActivity.this, "Account needs to be setup", Toast.LENGTH_LONG).show();
+                    }
                 }
-            }
 
-            @Override
-            public void onCancelled(DatabaseError databaseError) {
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
 
-            }
-        });
+                }
+            });
 
 
+        }
     }
 }

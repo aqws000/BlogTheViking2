@@ -1,20 +1,37 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent" android:layout_height="wrap_content"
     android:layout_margin="20dp">
 
 
     <LinearLayout
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
 
+
+        <TextView
+            android:id="@+id/post_username"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName"
+            android:text="username"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/post_profileimage"
+            android:layout_width="316dp"
+            android:layout_height="53dp"
+            tools:srcCompat="@tools:sample/avatars[3]" />
 
         <ImageView
             android:id="@+id/post_image"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="198dp"
             android:adjustViewBounds="true"
             android:padding="10dp"
             android:scaleType="centerCrop"
@@ -40,15 +57,6 @@
             android:text="The post desc goes here"
             android:textSize="14dp" />
 
-        <EditText
-            android:id="@+id/post_username"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="username"
-            android:textSize="12sp"
-            android:textStyle="bold" />
     </LinearLayout>
 
 

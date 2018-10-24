@@ -12,10 +12,16 @@
         android:orientation="vertical">
 
 
+        <ImageView
+            android:id="@+id/post_profileimage"
+            android:layout_width="66dp"
+            android:layout_height="53dp"
+            tools:srcCompat="@tools:sample/avatars[3]" />
+
         <TextView
             android:id="@+id/post_username"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="37dp"
             android:ems="10"
             android:inputType="textPersonName"
             android:text="username"
@@ -23,19 +29,12 @@
             android:textStyle="bold" />
 
         <ImageView
-            android:id="@+id/post_profileimage"
-            android:layout_width="316dp"
-            android:layout_height="53dp"
-            tools:srcCompat="@tools:sample/avatars[3]" />
-
-        <ImageView
             android:id="@+id/post_image"
             android:layout_width="match_parent"
-            android:layout_height="198dp"
-            android:adjustViewBounds="true"
-            android:padding="10dp"
+            android:layout_height="196dp"
+            android:cropToPadding="false"
             android:scaleType="centerCrop"
-            app:srcCompat="@mipmap/add_btn" />
+            android:src="@mipmap/add_btn" />
 
         <TextView
             android:id="@+id/post_title"
@@ -56,6 +55,19 @@
             android:padding="16dp"
             android:text="The post desc goes here"
             android:textSize="14dp" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <ImageButton
+                android:id="@+id/like_Btn"
+                android:layout_width="103dp"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                app:srcCompat="@drawable/ic_baseline_thumb_up_24px" />
+        </LinearLayout>
 
     </LinearLayout>
 

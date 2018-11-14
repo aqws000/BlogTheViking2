@@ -8,30 +8,41 @@
     <android.support.design.widget.AppBarLayout
         android:id="@+id/appbar"
         android:layout_width="match_parent"
-        android:layout_height="192dp"
+        android:layout_height="133dp"
         app:layout_anchor="@+id/appbar"
         app:layout_anchorGravity="top|center">
 
         <android.support.design.widget.CollapsingToolbarLayout
-            android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            app:contentScrim="?attr/colorPrimary"
+            android:layout_width="wrap_content"
+            android:layout_height="133dp"
+            app:contentScrim="@color/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed"
             app:toolbarId="@+id/toolbar">
 
-
-            <Button
-                android:id="@+id/button2"
-                android:layout_width="106dp"
-                android:layout_height="wrap_content"
-                android:onClick="openwebsite"
-                android:text="Salem State Calender" />
 
             <android.support.v7.widget.Toolbar
                 android:id="@+id/toolbar"
                 android:layout_width="match_parent"
                 android:layout_height="?attr/actionBarSize"></android.support.v7.widget.Toolbar>
 
+            <Button
+                android:id="@+id/insta_Btn"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="200dp"
+                android:text="Twitter"
+                app:layout_anchor="@+id/appbar"
+                app:layout_anchorGravity="top|center"
+                tools:layout_editor_absoluteX="46dp"
+                tools:layout_editor_absoluteY="0dp" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="0dp"
+                android:onClick="openwebsite"
+                android:text="Salem State Calender" />
         </android.support.design.widget.CollapsingToolbarLayout>
     </android.support.design.widget.AppBarLayout>
 
@@ -49,10 +60,10 @@
 
             <android.support.v7.widget.RecyclerView
                 android:id="@+id/blog_list"
-                android:layout_width="384dp"
+                android:layout_width="0dp"
                 android:layout_height="506dp"
+                android:layout_marginStart="8dp"
                 android:layout_marginBottom="8dp"
-                android:layout_marginStart="16dp"
                 app:layout_behavior="@string/appbar_scrolling_view_behavior"
                 app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="parent"

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.hayden.blogtest.BlogSingleActivity">
+
+    <ImageButton
+        android:id="@+id/singleBlogImage"
+        android:layout_width="wrap_content"
+        android:layout_height="200dp"
+        android:layout_marginStart="13dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="35dp"
+        android:adjustViewBounds="true"
+        android:background="@mipmap/add_btn"
+        android:contentDescription="TODO"
+        android:cropToPadding="true"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/singleBlogTitle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@mipmap/add_btn" />
+
+    <TextView
+        android:id="@+id/singleBlogDesc"
+        android:layout_width="wrap_content"
+        android:layout_height="21dp"
+        android:layout_marginStart="85dp"
+        android:layout_marginTop="47dp"
+        android:layout_marginEnd="84dp"
+        android:layout_marginBottom="222dp"
+        android:ems="10"
+        android:hint="Post Description.."
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/singleBlogTitle" />
+
+    <ImageView
+        android:id="@+id/Yi"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="65dp"
+        android:layout_marginTop="47dp"
+        android:layout_marginEnd="247dp"
+        android:layout_marginBottom="14dp"
+        app:layout_constraintBottom_toTopOf="@+id/singleRemoveBtn"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/singleBlogDesc"
+        app:srcCompat="@mipmap/yi_launcher" />
+
+    <TextView
+        android:id="@+id/singleBlogTitle"
+        android:layout_width="276dp"
+        android:layout_height="17dp"
+        android:layout_marginStart="54dp"
+        android:layout_marginTop="35dp"
+        android:layout_marginEnd="54dp"
+        android:layout_marginBottom="47dp"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/singleBlogDesc"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/singleBlogImage" />
+
+    <Button
+        android:id="@+id/singleRemoveBtn"
+        android:layout_width="289dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="41dp"
+        android:layout_marginTop="137dp"
+        android:layout_marginEnd="54dp"
+        android:layout_marginBottom="16dp"
+        android:text="Suppose you remove post"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/singleBlogDesc" />
+
+</android.support.constraint.ConstraintLayout>
